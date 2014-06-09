@@ -1,0 +1,4 @@
+servidor=radiognu.org
+canal=#radiognu
+nick=Gnoll2
+reconexion=10
