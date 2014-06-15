@@ -1,4 +1,4 @@
-servidor=radiognu.org
+servidor=irc.freenode.net
 puerto=8000
 canal=#radiognu
 nick=Gnoll2

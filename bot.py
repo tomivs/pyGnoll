@@ -26,7 +26,7 @@ conf = {
 ## CONEXION ##
 def conexion():
    irc = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #configuracion del socket
-   irc.connect((conf['servidor'], conf['puerto']))                                                     #conecta al servidor
+   irc.connect((conf['servidor'], int(conf['puerto'])))                                                     #conecta al servidor
    irc.send("USER "+ conf['nick'] +" "+ conf['nick'] +" "+ conf['nick'] +" :El bot de RadioGNU\n") #elige el usuario
    irc.send("NICK "+ conf['nick'] +"\n")                            #selecciona el nick
    irc.send("PRIVMSG nickserv :iNOOPE\r\n")    #autenticacion
@@ -78,7 +78,7 @@ def lectura():
          palabra = randint(0, len(archivo)-1)
          poema = str(archivo[palabra])
          irc.send('PRIVMSG '+conf['canal']+' :\x02\x038'+str(to)+': HABLA CLARO '+archivo[palabra])
-      
+
       if text.find(':!salir') !=-1:
          irc.send('QUIT :init 0 \n')
          sys.exit()
