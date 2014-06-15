@@ -14,6 +14,7 @@ sys.setdefaultencoding('utf-8')
 ## CONFIGURACIONES ##
 conf = {
 'servidor' : configuracion('servidor'),
+'puerto' : configuracion('puerto'),
 'canal' : configuracion('canal'),
 'nick' : configuracion('nick')
 }
@@ -25,7 +26,7 @@ conf = {
 ## CONEXION ##
 def conexion():
    irc = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #configuracion del socket
-   irc.connect((conf['servidor'], 6667))                                                     #conecta al servidor
+   irc.connect((conf['servidor'], conf['puerto']))                                                     #conecta al servidor
    irc.send("USER "+ conf['nick'] +" "+ conf['nick'] +" "+ conf['nick'] +" :El bot de RadioGNU\n") #elige el usuario
    irc.send("NICK "+ conf['nick'] +"\n")                            #selecciona el nick
    irc.send("PRIVMSG nickserv :iNOOPE\r\n")    #autenticacion

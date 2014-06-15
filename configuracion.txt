@@ -1,4 +1,5 @@
 servidor=radiognu.org
+puerto=8000
 canal=#radiognu
 nick=Gnoll2
 reconexion=10
