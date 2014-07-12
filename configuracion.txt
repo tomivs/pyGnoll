@@ -1,5 +1,5 @@
-servidor=irc.freenode.net
-puerto=8000
+servidor=radiognu.org
+puerto=6667
 canal=#radiognu
-nick=Gnoll2
+nick=pyGnoll
 reconexion=10
