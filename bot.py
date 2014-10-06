@@ -17,7 +17,8 @@ conf = {
 'puerto' : configuracion('puerto'),
 'reconexion' : configuracion('reconexion'),
 'canal' : configuracion('canal'),
-'nick' : configuracion('nick')
+'nick' : configuracion('nick'),
+'clave' : configuracion('clave')
 }
 
 #servidor = configuracion('servidor')
@@ -25,12 +26,13 @@ conf = {
 #nick = configuracion('nick')
 
 ## CONEXION ##
-def conexion(SERVIDOR, PUERTO, CANAL, NICK):
+def conexion(SERVIDOR, PUERTO, CANAL, NICK, CLAVE):
    irc.connect((SERVIDOR, int(PUERTO)))                                     #conecta al servidor
    irc.send("USER  %s %s %s :El bot de RadioGNU r\n" % (NICK,NICK,NICK) ) #elige el usuario
    irc.send("NICK %s \r\n" % (NICK))            #selecciona el nick
+   irc.send("PRIVMSG nickserv identify %s \r\n" % (CLAVE))            #selecciona el nick
    irc.send("PONG %s \r\n" % (SERVIDOR))           #entrada al canal
-   irc.send("PRIVMSG nickserv :iNOOPE\r\n")     #autenticacion
+   #irc.send("PRIVMSG nickserv :iNOOPE\r\n")     #autenticacion
    irc.send("JOIN %s \r\n" % (CANAL))           #entrada al canal
    global conectado
    conectado = True
@@ -124,7 +126,7 @@ while 1:
       irc = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #configuracion del socket
       irc.settimeout(300)
       conectado = False
-      conexion(conf['servidor'], conf['puerto'], conf['canal'], conf['nick'])
+      conexion(conf['servidor'], conf['puerto'], conf['canal'], conf['nick'], conf['clave'])
       lectura()
       print '[[CONEXIÓN CAIDA]]'
       if conf['reconexion'] == '1':
