@@ -2,4 +2,5 @@ servidor=radiognu.org
 puerto=6667
 canal=#radiognu
 nick=pyGnoll
+clave=CLAVE-DEL-BOT
 reconexion=10
